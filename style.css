@@ -21,7 +21,7 @@ body {
     color: #e8b4c3;
     font-family: 'Zen Antique', serif;
     letter-spacing: 0.5em;
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
     opacity: 0.5;
     font-size: 1rem;
 }
@@ -122,7 +122,7 @@ body {
   }
 .section{
     min-height: 100vh;
-    padding: 4rem 6rem;
+    padding: 2rem 6rem;
 }
 .section-header{
     display: flex;
@@ -401,3 +401,91 @@ body {
   filter: drop-shadow(0 0 6px #e8b4c3);
 }
 .git:hover { opacity: 1; transform: translateY(-2px); filter: drop-shadow(0 0 6px #e8b4c3); }
+
+/* Connect Section */
+#connect {
+    align-items: center;
+    text-align: center;
+}
+
+.connect-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.connect-text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 4rem;
+    letter-spacing: 0.05em;
+}
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+    .social-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* mobile */
+@media (max-width: 500px) {
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-card:hover {
+    border-color: var(--pink);
+    transform: translateY(-6px);
+}
+
+.social-icon {
+    color: var(--pink);
+    transition: all 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(232, 180, 195, 0.4));
+}
+
+.social-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.social-kanji {
+    font-family: 'Zen Antique', serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    opacity: 0.6;
+    letter-spacing: 2px;
+}
+
+.social-card:hover .social-kanji {
+    opacity: 1;
+    color: var(--pink);
+}
