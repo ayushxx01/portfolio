@@ -489,3 +489,83 @@ body {
     opacity: 1;
     color: var(--pink);
 }
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+
+    body{
+        padding-right: 0;
+        padding-top: 40px
+    }
+
+    .nav-menu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        padding: 1rem 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        z-index: 999;
+
+        border-bottom: 1px solid var(--line);
+        background-color: rgba(10,10,10,0.95);
+
+        -webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+    }
+
+    .nav-label{
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-items{
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-item{
+        padding: 0.5rem;
+    }
+
+    .nav-text{
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+    }
+
+    .nav-kanji{
+        display: none;
+    }
+
+    .nav-number{
+        display: none;
+    }
+
+    .section{
+        padding: 2rem;
+    }
+
+    #hero{
+        padding: 0 2rem;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    #first-name,
+    #last-name{
+        font-size: clamp(3rem, 14vw, 5rem);
+    }
+}
