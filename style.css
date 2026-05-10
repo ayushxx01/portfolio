@@ -495,7 +495,7 @@ body {
 
     body{
         padding-right: 0;
-        padding-top: 100px
+        padding-top: 180px;
     }
 
     .nav-menu{
@@ -540,7 +540,7 @@ backdrop-filter: blur(10px);
     }
 
     .nav-text{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         letter-spacing: 0.08em;
     }
 
