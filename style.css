@@ -211,6 +211,24 @@ body {
     display: block;
     transition: transform 0.45s ease;
 }
+
+.nav-item.active .nav-text{
+    color: var(--pink);
+}
+
+.nav-item.active .nav-kanji{
+    color: var(--pink);
+    opacity: 1;
+}
+
+.nav-item.active .nav-number{
+    color: var(--pink);
+    opacity: 1;
+}
+
+.nav-item.active{
+    transform: translateX(-8px);
+}
 /* Japanese text starts BELOW the visible area */
 .nav-swap .english {
    
