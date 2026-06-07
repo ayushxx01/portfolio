@@ -511,6 +511,9 @@ body {
 /* MOBILE NAV */
 @media (max-width: 768px) {
 
+    html {
+        scroll-padding-top: 140px;
+    }
     body{
         padding-right: 0;
         

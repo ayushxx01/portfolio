@@ -59,7 +59,7 @@
         </a>
       </li>
       <li>
-        <a class="nav-item" href="/Ayush_cv.pdf" download="Ayush_cv.pdf">
+        <a class="nav-item" href="/Resume_ayush.pdf" download="Resume_ayush.pdf">
           <div class="nav-left">
             <span class="nav-number">五</span>
             <span class="nav-text">Resume</span>
@@ -130,24 +130,70 @@
     </div>
 
     <!-- Project 2 -->
-    <div class="project-card">
-        <div class="project-number">二</div>
-        <h3 class="project-name">Flappy Bird Clone</h3>
-        <p class="project-desc">
-            A Flutter-based game built using the Flame engine featuring sprite animations, 
-            physics-based gameplay, collision detection, and score tracking. Designed to 
-            replicate the original Flappy Bird experience.
-        </p>
+ <div class="project-card">
 
-        <div class="project-tech">
-            <span class="tech-tag">Flutter</span>
-            <span class="tech-tag">Dart</span>
-            <span class="tech-tag">Flame Engine</span>
-                        <a href="https://github.com/ayushxx01/Flappy_bird_flame" target="_blank" class="git">
-                <img src="gitty.svg" class="git-icon" alt="GitHub">
-            </a>
-        </div>
+    <div class="project-number">二</div>
+
+    <h3 class="project-name">DevLog</h3>
+
+    <p class="project-desc">
+
+        An AI-powered developer journaling platform that automatically transforms daily GitHub
+        activity into meaningful progress updates. GitHub webhooks capture commits, which are
+        stored in PostgreSQL and processed by Gemini AI to generate concise development summaries.
+        Summaries are delivered to Discord for approval before being published as developer logs.
+
+    </p>
+
+    <div class="project-tech">
+
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">Express.js</span>
+        <span class="tech-tag">PostgreSQL(Neon)</span>
+        <span class="tech-tag">Render</span>
+        <span class="tech-tag">Discord.js</span>
+        <span class="tech-tag">Gemini AI</span>
+        <span class="tech-tag">GitHub Webhooks</span>
+
+        <a href="https://github.com/ayushxx01/Devlog" target="_blank" class="git">
+
+            <img src="gitty.svg" class="git-icon" alt="GitHub">
+
+        </a>
+
     </div>
+
+</div>
+
+<div class="project-card">
+
+    <div class="project-number">三</div>
+
+    <h3 class="project-name">Faraway</h3>
+
+    <p class="project-desc">
+
+        A relationship journaling platform designed for long-distance couples to stay emotionally connected through shared daily reflections. Partners connect using unique codes and maintain a private journal space where each person can write and view their partner’s entries. Built with Firebase Authentication and Firestore for real-time data storage, with planned features including journal history, relationship insights, and personalized shared themes.
+
+    </p>
+
+    <div class="project-tech">
+
+        <span class="tech-tag">React.js</span>
+        <span class="tech-tag">Firebase Auth</span>
+        <span class="tech-tag">Cloud Firestore</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">CSS</span>
+
+        <a href="https://github.com/ayushxx01/Faraway" target="_blank" class="git">
+
+            <img src="gitty.svg" class="git-icon" alt="GitHub">
+
+        </a>
+
+    </div>
+
+</div>
 
 </div>
 </section>
@@ -255,6 +301,21 @@
   <div class="skill-name">Redis</div>
   <div class="skill-kanji">速度</div>
 </div>
+
+<div class="skill-item">
+  <div class="skill-name">PostgreSQL</div>
+  <div class="skill-kanji">記録</div>
+</div>
+
+<div class="skill-item">
+  <div class="skill-name">Render</div>
+  <div class="skill-kanji">配信</div>
+</div>
+
+<div class="skill-item">
+  <div class="skill-name">Vercel</div>
+  <div class="skill-kanji">展開</div>
+</div>
 </div>
 </section>
 
@@ -351,6 +412,26 @@ window.addEventListener("scroll", () => {
 
 });
 
+</script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCsgWjf_1sHwb1yVPiLrVXSGwf6He5KGSk",
+    authDomain: "portfolio-xx01.firebaseapp.com",
+    projectId: "portfolio-xx01",
+    storageBucket: "portfolio-xx01.firebasestorage.app",
+    messagingSenderId: "183713203968",
+    appId: "1:183713203968:web:e9f0fa55aa1b78e68815e5"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 </script>
 </body>
 </html>
