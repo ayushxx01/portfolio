@@ -59,9 +59,18 @@
         </a>
       </li>
       <li>
+  <a class="nav-item" href="#logs">
+    <div class="nav-left">
+      <span class="nav-number">五</span>
+      <span class="nav-text">Logs</span>
+    </div>
+    <span class="nav-kanji">誌</span>
+  </a>
+</li>
+      <li>
         <a class="nav-item" href="/Resume_ayush.pdf" download="Resume_ayush.pdf">
           <div class="nav-left">
-            <span class="nav-number">五</span>
+            <span class="nav-number">六</span>
             <span class="nav-text">Resume</span>
           </div>
           <span class="nav-kanji">履歴</span>
@@ -380,58 +389,114 @@
         </div>
     </div>
 </section>
+<section id="logs" class="section">
+  <div class="section-header">
+    <span class="section-number">五</span>
+    <h2 class="section-heading">
+      <span class="section-head-kanji">誌</span>LOGS
+    </h2>
+  </div>
+  <p class="logs-subtitle">daily development summaries — written by the machines, verified by me</p>
+
+  <div class="logs-list" id="logs-list"></div>
+
+  <div class="logs-loading" id="logs-loading">
+    <span>読み込み中 / loading</span>
+  </div>
+
+  <div class="logs-end" id="logs-end">
+    <span>— 以上 / end of logs —</span>
+  </div>
+
+  <div id="logs-sentinel"></div>
+</section>
 <script>
+  // ── Active nav on scroll ──────────────────────────────
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('.nav-item[href^="#"]');
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll('.nav-item[href^="#"]');
-
-window.addEventListener("scroll", () => {
-
+  window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach((section) => {
-
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-
-        if (scrollY >= sectionTop - 300) {
-            current = section.getAttribute("id");
-        }
-
+      if (scrollY >= section.offsetTop - 300) {
+        current = section.getAttribute("id");
+      }
     });
-
     navLinks.forEach((link) => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
-
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
     });
+  });
 
-});
+  // ── Logs infinite scroll ──────────────────────────────
+  const API = "https://devlog-1-5xml.onrender.com/blogs";
+  const logsList   = document.getElementById("logs-list");
+  const loading    = document.getElementById("logs-loading");
+  const endMsg     = document.getElementById("logs-end");
+  const sentinel   = document.getElementById("logs-sentinel");
 
-</script>
+  let currentPage = 1;
+  let isFetching  = false;
+  let reachedEnd  = false;
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  function formatDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString("en-GB", {
+      day: "2-digit", month: "short", year: "numeric"
+    }); // → "08 Jun 2026"
+  }
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: "portfolio-xx01.firebaseapp.com",
-    projectId: "portfolio-xx01",
-    storageBucket: "portfolio-xx01.firebasestorage.app",
-    messagingSenderId: "183713203968",
-    appId: "1:183713203968:web:e9f0fa55aa1b78e68815e5"
-  };
+  function renderCard(log) {
+    const card = document.createElement("div");
+    card.className = "log-card";
+    card.innerHTML = `
+      <div class="log-meta">
+        <span class="log-date">${formatDate(log.created_at)}</span>
+        <span class="log-repo">${log.repo.trim()}</span>
+      </div>
+      <p class="log-summary">${log.summary}</p>
+    `;
+    logsList.appendChild(card);
+  }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  async function fetchLogs() {
+    if (isFetching || reachedEnd) return;
+
+    isFetching = true;
+    loading.style.display = "block";
+
+    try {
+      const res  = await fetch(`${API}?page=${currentPage}`);
+      const data = await res.json();
+
+      data.forEach(renderCard);
+
+      // fewer than 5 = last page
+      if (data.length < 5) {
+        reachedEnd = true;
+        loading.style.display = "none";
+        endMsg.style.display  = "block";
+        observer.disconnect();
+      } else {
+        currentPage++;
+      }
+    } catch (err) {
+      loading.innerHTML = "<span>接続エラー / failed to load</span>";
+      console.error("Logs fetch error:", err);
+    } finally {
+      isFetching = false;
+      if (!reachedEnd) loading.style.display = "none";
+    }
+  }
+
+  // Trigger fetch when sentinel enters viewport
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) fetchLogs();
+  }, { rootMargin: "200px" }); // starts loading 200px before hitting bottom
+
+  observer.observe(sentinel);
 </script>
 </body>
 </html>

@@ -590,3 +590,87 @@ backdrop-filter: blur(10px);
         font-size: clamp(3rem, 14vw, 5rem);
     }
 }
+
+
+/* Logs Section */
+.logs-subtitle {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+}
+
+.logs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+}
+
+.log-card {
+  border: 1px solid var(--line);
+  padding: 2rem;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+
+.log-card:hover {
+  border-color: var(--pink);
+}
+
+.log-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.log-date {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--pink);
+  font-family: 'Zen Antique', serif;
+}
+
+.log-repo {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  opacity: 0.6;
+  border: 1px solid var(--line);
+  padding: 0.2rem 0.6rem;
+}
+
+.log-summary {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  white-space: pre-line; /* renders \n as line breaks */
+}
+
+.logs-loading {
+  font-family: 'Zen Antique', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.logs-end {
+  font-family: 'Zen Antique', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  opacity: 0.4;
+  text-align: center;
+  padding: 2rem 0;
+  display: none; /* shown via JS */
+}
+
+#logs-sentinel {
+  height: 1px;
+}
