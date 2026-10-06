@@ -1,3 +1,5 @@
 .env
 /Resume_ayush.pdf
 /gitty.svg
+*.zip
+*.pkg
